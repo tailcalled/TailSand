@@ -29,6 +29,7 @@ package object parsers {
       x <- this
       _ <- if (f(x)) done(()) else fail("filter failed")
     } yield x
+    def withFilter(f: Result => Boolean) = filter(f)
     def **[OtherResult](that: => Parser[OtherResult]) = for {
       x <- this
       y <- that
